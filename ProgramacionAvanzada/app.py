@@ -1,6 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for
 from datetime import datetime
 import sqlite3
+import pdfkit
+from flask import make_response
+
+# Ruta exacta del ejecutable (funciona porque ya comprobaste que existe)
+path_wkhtmltopdf = r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"
+config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+
 
 app = Flask(__name__)
 
@@ -264,6 +271,60 @@ def eliminar_cliente(cliente_id):
     conn.commit()
     conn.close()
     return redirect(url_for('clientes'))
+
+@app.route('/factura/<int:id>')
+def factura(id):
+    conn = get_db_connection()
+
+    venta = conn.execute('''
+        SELECT ventas.id, ventas.fecha, clientes.nombre AS cliente_nombre
+        FROM ventas
+        JOIN clientes ON ventas.cliente_id = clientes.id
+        WHERE ventas.id = ?
+    ''', (id,)).fetchone()
+
+    if not venta:
+        conn.close()
+        return "Venta no encontrada"
+
+    productos = conn.execute('''
+        SELECT productos.nombre, detalle_ventas.cantidad, productos.precio,
+               (detalle_ventas.cantidad * productos.precio) AS subtotal
+        FROM detalle_ventas
+        JOIN productos ON detalle_ventas.producto_id = productos.id
+        WHERE detalle_ventas.venta_id = ?
+    ''', (id,)).fetchall()
+
+    total = sum([p['subtotal'] for p in productos])
+    conn.close()
+
+    rendered = render_template('factura.html', id=id, venta=venta, productos=productos, total=total)
+
+    # Generar el PDF con configuración
+    pdf = pdfkit.from_string(rendered, False, configuration=config)
+
+    response = make_response(pdf)
+    response.headers["Content-Type"] = "application/pdf"
+    response.headers["Content-Disposition"] = f"attachment; filename=factura_{id}.pdf"
+
+    return response
+
+
+@app.route('/eliminar_venta/<int:id>')
+def eliminar_venta(id):
+    conn = get_db_connection()
+
+    # eliminar detalle primero
+    conn.execute('DELETE FROM detalle_ventas WHERE venta_id = ?', (id,))
+
+    # eliminar venta
+    conn.execute('DELETE FROM ventas WHERE id = ?', (id,))
+
+    conn.commit()
+    conn.close()
+
+    return redirect(url_for('historial_ventas'))
+
 
 
 if __name__ == '__main__':

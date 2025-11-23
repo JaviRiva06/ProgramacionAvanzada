@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 35px;
+            background: #fff;
+        }
+
+        .factura-box{
+            border: 2px solid #6C63FF;
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+        h1{
+            text-align: center;
+            color: #6C63FF;
+            margin-bottom: 20px;
+        }
+
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th{
+            background: #6C63FF;
+            color: #fff;
+            padding: 8px;
+            text-align: left;
+        }
+
+        td{
+            padding: 8px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .totales{
+            text-align: right;
+            font-size: 1.3em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="factura-box">
+
+    <h1>Factura de Venta</h1>
+
+    <p><strong>ID Venta:</strong> {{ id }}</p>
+    <p><strong>Fecha:</strong> {{ venta['fecha'] }}</p>
+    <p><strong>Cliente:</strong> {{ venta['cliente_nombre'] }}</p>
+
+    <h3>Detalle de productos:</h3>
+
+    <table>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Subtotal</th>
+        </tr>
+
+        {% for p in productos %}
+        <tr>
+            <td>{{ p['nombre'] }}</td>
+            <td>{{ p['cantidad'] }}</td>
+            <td>${{ "%.2f"|format(p['precio']) }}</td>
+            <td>${{ "%.2f"|format(p['subtotal']) }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <p class="totales"><strong>Total:</strong> ${{ "%.2f"|format(total) }}</p>
+
+</div>
+
+</body>
+</html>

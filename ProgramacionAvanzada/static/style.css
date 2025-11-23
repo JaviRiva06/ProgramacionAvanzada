@@ -219,3 +219,20 @@ button:hover,
     transform: scale(1.02);
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
+.btn-eliminar-venta{
+    display: inline-block;
+    margin-top: 10px;
+    background: #ff4d4d;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.25s;
+}
+
+.btn-eliminar-venta:hover{
+    background: #e63939;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
