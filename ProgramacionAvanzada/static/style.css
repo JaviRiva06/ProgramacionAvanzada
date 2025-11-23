@@ -1,440 +1,221 @@
-/*fuente poppins*/
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/* FUENTE */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body {
-    font-family: Poppins, Arial, sans-serif;
-    margin: 40px;
-    background-color: #ddd;
-    background-image: url("../static/images/fondo.jpg");
-    background-size: cover;
-    background-attachment: fixed;
 
+body{
+    font-family: 'Inter', sans-serif;
+    background: #EEF1F7;
+    color: #1A1A1A;
+    overflow-x: hidden;
 }
 
-h1, h2 {
+/* -------- NAVBAR -------- */
+.navbar{
+    width: 100%;
+    background: linear-gradient(135deg, #6C63FF, #8A7CFF);
+    color: #fff;
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.15);
+}
+
+.navbar-title{
+    font-size: 1.8em;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.nav-btn{
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    background: #ffffff25;
+    color: #fff;
+    transition: 0.25s;
+    backdrop-filter: blur(5px);
+}
+.nav-btn:hover{
+    background: #ffffff45;
+    transform: translateY(-2px);
+}
+
+/* -------- HERO TOP BOX -------- */
+.hero-box{
+    background: rgba(163, 216, 255, 0.35);
+    backdrop-filter: blur(15px);
+    padding: 40px;
+    text-align: center;
+    margin: 30px auto;
+    border-radius: 18px;
+    width: 92%;
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.12);
+}
+
+.hero-box h2{
+    font-size: 2.6em;
+    color: #1A1A1A;
+    font-weight: 700;
+}
+
+.hero-box p{
+    font-size: 1.15em;
+    margin-top: 10px;
     color: #333;
 }
 
-form input, form button {
-    margin: 5px;
-    padding: 8px;
+/* -------- DASHBOARD MENU -------- */
+.dashboard-container{
+    width: 92%;
+    margin: 0 auto;
+    margin-top: 20px;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    padding: 10px 0;
-    margin: 5px 0;
-}
-.titulo {
-    font-size: 9em;
-    text-align: center;
-    color: #dd9821;
-}
-.titulo span {
-    color: #2774af;
-}
-
-/* PANEL DE CONTROL */
-.text-container {
-    margin: 20px auto;
-    max-width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    padding: 10px;
+.dashboard-grid{
     display: flex;
-    flex-direction: column;
-    position: relative;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 22px;
+    padding: 10px;
 }
 
-.text-container .text {
-    padding-left: 10px;
-}
+.dashboard-card{
+    background: white;
+    padding: 25px 35px;
+    min-width: 220px;
+    min-height: 120px;
 
-.text-container .text h1 {
-    font-size: 4em;
-}
-
-.text-container .text p {
-    font-size: 1.8em;
-    margin-bottom: 5px;
-    color: #555555;
-}
-
-.text-container .logo-home {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    top: 20%;
-    right: 3%;
-}
-
-.dashboard-container {
-    padding: 30px;
-    background-color: #edb016;
-    max-width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-
-
-.dashboard-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    padding: 30px;
-}
-
-.dashboard-card {
-    background-color: white;
-    color: #1c1c1c;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 1.1em;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    min-height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    word-wrap: break-word;
-}
-
-.dashboard-card:hover {
-    background-color: #e58e0d;
-    color: #fff;
-}
-
-/* PRODUCTOS */
-.productos-section {
-    padding: 30px;
-    background-color: #f7f7f7;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    margin-top: 40px;
-}
-
-.titulo-seccion {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.formulario-producto {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-}
-
-.formulario-producto input,
-.formulario-producto select {
-    flex: 1 1 200px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1em;
-}
-
-.btn-agregar {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 10px 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.btn-agregar:hover {
-    background-color: #218838;
-}
-
-.lista-productos {
-    display: flex;
     flex-direction: column;
-    gap: 15px;
-}
 
-.tarjeta-producto {
-    background-color: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    border-left: 5px solid #edb016;
-}
-
-.tarjeta-producto p {
-    margin: 5px 0;
-    font-size: 1.1em;
-}
-
-.acciones-producto {
-    margin-top: 10px;
-}
-
-.btn-editar, .btn-eliminar {
+    border-radius: 20px;
+    font-size: 1.25em;
+    font-weight: 700;
     text-decoration: none;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-weight: bold;
-    margin-right: 10px;
+    color: #1A1A1A;
+
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+    transition: 0.25s ease-in-out;
+    border: 2px solid transparent;
 }
 
-.btn-editar {
-    background-color: #007bff;
+.dashboard-card:hover{
+    transform: translateY(-8px) scale(1.03);
+    background: linear-gradient(135deg, #6C63FF, #A28BFF);
     color: white;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.22);
+    border-color: #fff4;
 }
 
-.btn-editar:hover {
-    background-color: #0056b3;
-}
-
-.btn-eliminar {
-    background-color: #dc3545;
+.dashboard-card.active{
+    background: linear-gradient(135deg, #6C63FF, #A28BFF);
     color: white;
+    border-color: #fff5;
 }
 
-.btn-eliminar:hover {
-    background-color: #c82333;
+/* -------- CONTENIDO PÁGINAS -------- */
+.content{
+    width: 92%;
+    margin: 40px auto;
 }
 
-/* CATEGORIAS */
-.categorias-section {
-    padding: 30px;
-    background-color: #fdfdfd;
+/* -------- FORMULARIOS -------- */
+form input,
+form select{
+    padding: 12px;
+    border: 2px solid #C9C9C9;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    margin-top: 40px;
-}
-
-.formulario-categoria {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-}
-
-.formulario-categoria input {
-    flex: 1 1 250px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1em;
-}
-
-.lista-categorias {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.categoria-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: white;
-    padding: 15px 20px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-    font-size: 1.1em;
-}
-
-.btn-eliminar-categoria {
-    color: #dc3545;
-    font-size: 1.4em;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.btn-eliminar-categoria:hover {
-    color: #a71d2a;
-    transform: scale(1.1);
-}
-
-/* CLIENTES */
-.clientes-section {
-    padding: 30px;
-    background-color: #fdfdfd;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    margin-top: 40px;
-}
-
-.formulario-cliente {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-}
-
-.formulario-cliente input {
-    flex: 1 1 250px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1em;
-}
-
-.lista-clientes {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.cliente-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: white;
-    padding: 15px 20px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-    font-size: 1.1em;
-}
-
-.btn-eliminar-cliente {
-    color: #dc3545;
-    font-size: 1.4em;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.btn-eliminar-cliente:hover {
-    color: #a71d2a;
-    transform: scale(1.1);
-}
-
-/* REGISTRAR VENTAS */
-.venta-section {
-    padding: 30px;
-    background-color: #fefefe;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    margin-top: 40px;
-}
-
-.venta-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.venta-form select,
-.venta-form input[type="number"] {
-    padding: 10px;
-    border: 1px solid #bbb;
-    border-radius: 6px;
-    font-size: 1em;
     width: 100%;
+    margin-bottom: 14px;
+    transition: 0.2s;
+    background: #fff;
 }
 
-.producto-item {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
+form input:focus,
+form select:focus{
+    border-color: #6C63FF;
+    box-shadow: 0 0 8px rgba(108,99,255,0.3);
+    outline: none;
 }
 
-.btn-agregar,
-.btn-principal {
-    padding: 10px 20px;
-    border: none;
-    background-color: #edb016;
-    color: #fff;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.btn-agregar:hover,
-.btn-principal:hover {
-    background-color: #e58e0d;
-}
-
-.btn-volver {
-    margin-top: 20px;
-    display: inline-block;
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.btn-volver:hover {
-    text-decoration: underline;
-}
-
-
-/* HISTORIAL DE VENTAS */
-.historial-section {
-    padding: 30px;
-    background-color: #fafafa;
+/* -------- BOTONES -------- */
+button,
+.btn-principal,
+.btn-agregar{
+    padding: 12px 22px;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    margin-top: 40px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    background: #6C63FF;
+    color: white;
+    transition: 0.25s;
+    letter-spacing: .5px;
 }
 
-.venta-card {
-    border: 1px solid #ddd;
+button:hover,
+.btn-principal:hover,
+.btn-agregar:hover{
+    background: #594ff2;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* -------- TARJETAS -------- */
+.tarjeta-producto,
+.categoria-item,
+.cliente-item{
+    background: white;
     padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-    transition: transform 0.2s ease;
+    margin-bottom: 14px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    border-left: 4px solid #6C63FF;
+    transition: 0.25s;
 }
 
-.venta-card:hover {
-    transform: scale(1.01);
+.tarjeta-producto:hover,
+.categoria-item:hover,
+.cliente-item:hover{
+    transform: translateY(-3px);
 }
 
-.detalle-venta {
-    list-style: disc;
-    margin-left: 20px;
-    color: #333;
-    font-size: 0.95em;
-}
-
-.mensaje-sin-datos {
-    font-style: italic;
-    color: #777;
-    margin-top: 20px;
-}
-
-.btn-volver {
+/* -------- LINKS -------- */
+.btn-volver{
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 12px;
+    color: #6C63FF;
+    font-weight: 600;
     text-decoration: none;
-    color: #007bff;
-    font-weight: bold;
+    transition: 0.2s;
+}
+.btn-volver:hover{
+    text-decoration: underline;
+    transform: translateX(-3px);
 }
 
-.btn-volver:hover {
-    text-decoration: underline;
+/* -------- HISTORIAL -------- */
+.venta-card{
+    background: #fff;
+    padding: 22px;
+    border-radius: 16px;
+    border-left: 4px solid #A3D8FF;
+    margin-bottom: 16px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    transition: 0.25s;
+}
+
+.venta-card:hover{
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
