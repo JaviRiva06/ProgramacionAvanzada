@@ -4,7 +4,7 @@ import sqlite3
 import pdfkit
 from flask import make_response
 
-# Ruta exacta del ejecutable (funciona porque ya comprobaste que existe)
+
 path_wkhtmltopdf = r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"
 config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
 
